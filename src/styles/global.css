@@ -1,0 +1,874 @@
+/**
+ * Global CSS - Executive Photography Website
+ * Black Theme with Professional Animations
+ */
+
+/* ============================================
+   GLOBAL STYLES & RESET
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ============================================
+   NAVIGATION BAR
+   ============================================ */
+
+#navBar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#navBar.scrolled {
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 0.75rem 2rem;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+#navLinks {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+#navLinks a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+#navLinks a:hover,
+#navLinks a.active {
+    color: #ffffff;
+}
+
+#navLinks a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+#navLinks a:hover::after,
+#navLinks a.active::after {
+    width: 100%;
+}
+
+/* Mobile Menu */
+#mobileMenuButton {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#mobileMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.98);
+    z-index: 2000;
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    #mobileMenuButton {
+        display: block;
+    }
+    
+    #navLinks {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+#heroSlider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#heroImages {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#heroImages img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+
+#heroImages img.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+#heroImages img.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Hero Content Overlay - White Transparent Block */
+#heroContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    max-width: 600px;
+    animation: slideUp 1s ease-out;
+}
+
+#heroTitle {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+}
+
+#heroText {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #ffffff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Hero Navigation Buttons */
+#heroPrevBtn,
+#heroNextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+#heroPrevBtn {
+    left: 2rem;
+}
+
+#heroNextBtn {
+    right: 2rem;
+}
+
+#heroPrevBtn:hover,
+#heroNextBtn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Hero Indicators */
+#heroIndicators {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 20;
+}
+
+#heroIndicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#heroIndicators button.active {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    transform: scale(1.2);
+}
+
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
+
+#aboutSection {
+    padding: 6rem 2rem;
+    background-color: #000000;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+#aboutSection.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#aboutContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+#aboutImage {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+}
+
+#aboutImage.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#aboutImage img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+#aboutImage.hover-effect img {
+    transform: scale(1.05);
+}
+
+#aboutImage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#aboutImage.hover-effect::before {
+    opacity: 1;
+}
+
+#aboutContent {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease;
+}
+
+#aboutContent.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#aboutTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+#aboutText {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    #aboutContainer {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   CLIENT LOGOS SECTION
+   ============================================ */
+
+#clientLogosSection {
+    padding: 4rem 2rem;
+    background-color: #111111;
+    overflow: hidden;
+}
+
+#clientLogosContainer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+#clientLogosWrapper {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    width: fit-content;
+    animation: scrollLogos 30s linear infinite;
+}
+
+#clientLogosWrapper img {
+    height: 80px;
+    width: auto;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    filter: grayscale(100%);
+}
+
+#clientLogosWrapper img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+@keyframes scrollLogos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ============================================
+   GALLERY SECTION
+   ============================================ */
+
+#gallerySection {
+    padding: 6rem 2rem;
+    background-color: #000000;
+}
+
+#galleryContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+#galleryContainer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#galleryTitle {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #ffffff;
+}
+
+#galleryImages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+}
+
+#galleryImages img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+#galleryImages img.active {
+    opacity: 1;
+    transform: scale(1);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+#galleryImages img.fade-in {
+    animation: fadeInScale 0.8s ease-out;
+}
+
+#galleryImages img.slide-in {
+    animation: slideInScale 0.8s ease-out;
+}
+
+#galleryImages img.hover-zoom:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   HIRE ME BUTTON
+   ============================================ */
+
+#hireMeButton {
+    display: block;
+    margin: 4rem auto;
+    padding: 1.5rem 4rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    color: #000000;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+#hireMeButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+#hireMeButton:hover::before {
+    left: 100%;
+}
+
+#hireMeButton:hover,
+#hireMeButton.hover-glow {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+}
+
+#hireMeButton.clicked {
+    transform: scale(0.95);
+}
+
+/* ============================================
+   CONTACT FORM SECTION
+   ============================================ */
+
+#contactSection {
+    padding: 6rem 2rem;
+    background-color: #111111;
+}
+
+#contactForm {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+#contactForm.highlight {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+#contactFormTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#contactForm input::placeholder,
+#contactForm textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+#contactForm input.focused,
+#contactForm textarea.focused {
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+#contactForm input.error,
+#contactForm textarea.error {
+    border-color: #ff4444;
+    background-color: rgba(255, 68, 68, 0.1);
+}
+
+#contactForm textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+#submitButton {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#submitButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+}
+
+#submitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#successMessage,
+#errorMessage {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+}
+
+#successMessage {
+    background-color: rgba(76, 175, 80, 0.2);
+    border: 1px solid rgba(76, 175, 80, 0.5);
+    color: #4caf50;
+}
+
+#errorMessage {
+    background-color: rgba(255, 68, 68, 0.2);
+    border: 1px solid rgba(255, 68, 68, 0.5);
+    color: #ff4444;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+#footer {
+    background-color: #000000;
+    padding: 4rem 2rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+#footer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+#footerBrand {
+    margin-bottom: 1rem;
+}
+
+#footerBrand h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+#footerBrand p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+#footerLinks h4,
+#footerContact h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+#footerLinks ul {
+    list-style: none;
+    padding: 0;
+}
+
+#footerLinks ul li {
+    margin-bottom: 0.5rem;
+}
+
+#footerLinks ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#footerLinks ul li a:hover {
+    color: #ffffff;
+}
+
+#footerContact p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+#socialLinks {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#socialLinks a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+#socialLinks a.hover-scale:hover {
+    transform: scale(1.2);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#footerBottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    #heroTitle {
+        font-size: 2.5rem;
+    }
+    
+    #heroText {
+        font-size: 1.2rem;
+    }
+    
+    #heroContent {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+    
+    #aboutTitle {
+        font-size: 2rem;
+    }
+    
+    #galleryTitle,
+    #contactFormTitle {
+        font-size: 2rem;
+    }
+    
+    #galleryImages {
+        grid-template-columns: 1fr;
+    }
+    
+    #footerContent {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    #heroTitle {
+        font-size: 2rem;
+    }
+    
+    #heroContent {
+        padding: 1.5rem;
+    }
+    
+    #heroPrevBtn,
+    #heroNextBtn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    #hireMeButton {
+        padding: 1.2rem 2rem;
+        font-size: 1rem;
+    }
+}
+
