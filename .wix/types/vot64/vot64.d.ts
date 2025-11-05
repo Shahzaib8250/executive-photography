@@ -1,0 +1,44 @@
+/// <reference path="../masterPage/masterPage.d.ts" />
+type PageElementsMap = MasterPageElementsMap & {
+	"#section8": $w.HiddenCollapsedElement;
+	"#text8": $w.Text;
+	"#section6": $w.HiddenCollapsedElement;
+	"#line4": $w.HiddenCollapsedElement;
+	"#text7": $w.Text;
+	"#section7": $w.HiddenCollapsedElement;
+	"#box11": $w.Box;
+	"#repeater2": $w.Repeater;
+	"#box8": $w.Box;
+	"#imageX1": $w.Image;
+	"#text6": $w.Text;
+	"#text5": $w.Text;
+	"#box7": $w.Box;
+	"#section5": $w.HiddenCollapsedElement;
+	"#box5": $w.Box;
+	"#line3": $w.HiddenCollapsedElement;
+	"#text4": $w.Text;
+	"#repeater1": $w.Repeater;
+	"#box4": $w.Box;
+	"#text3": $w.Text;
+	"#line2": $w.HiddenCollapsedElement;
+	"#box1": $w.Box;
+	"#line1": $w.HiddenCollapsedElement;
+	"#text2": $w.Text;
+	"#section4": $w.HiddenCollapsedElement;
+	"#button2": $w.Button;
+	"#box2": $w.Box;
+	"#gallery1": $w.Gallery;
+	"#button1": $w.Button;
+	"#videoBox2": $w.VideoBox;
+	"#text94": $w.Text;
+	"#box81": $w.Box;
+	"#box82": $w.Box;
+	"#text95": $w.Text;
+	"#section12": $w.HiddenCollapsedElement;
+	"#box37": $w.Box;
+	"#videoBox1": $w.VideoBox;
+	"#box35": $w.Box;
+	"#text45": $w.Text;
+	"#button8": $w.Button;
+	"#page1": $w.Page;
+}
